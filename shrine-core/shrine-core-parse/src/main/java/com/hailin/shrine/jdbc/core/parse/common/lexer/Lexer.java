@@ -69,6 +69,53 @@ public class Lexer {
         return false;
     }
 
+    /**
+     * 开始字符是不是有效
+     */
+    protected boolean isVariableBegin() {
+        return false;
+    }
 
+    /**
+     * 是否支持空字符
+     */
+    protected boolean isSupportNChars() {
+        return false;
+    }
 
+    /**
+     * 开始字符是否是空字符
+     */
+    private boolean isNCharBegin() {
+        return isSupportNChars() && 'N' == getCurrentChar(0) && '\'' == getCurrentChar(1);
+    }
+
+    private boolean isIdentifierBegin() {
+        return isIdentifierBegin(getCurrentChar(0));
+    }
+
+    protected boolean isIdentifierBegin(final char ch) {
+        return CharType.isAlphabet(ch) || '`' == ch || '_' == ch || '$' == ch;
+    }
+
+    private boolean isHexDecimalBegin() {
+        return '0' == getCurrentChar(0) && 'x' == getCurrentChar(1);
+    }
+
+    private boolean isNumberBegin() {
+        return CharType.isDigital(getCurrentChar(0)) || ('.' == getCurrentChar(0) && CharType.isDigital(getCurrentChar(1)) && !isIdentifierBegin(getCurrentChar(-1))
+                || ('-' == getCurrentChar(0) && ('.' == getCurrentChar(1) || CharType.isDigital(getCurrentChar(1)))));
+    }
+
+    private boolean isSymbolBegin() {
+        return CharType.isSymbol(getCurrentChar(0));
+    }
+
+    protected boolean isCharsBegin() {
+        return '\'' == getCurrentChar(0) || '\"' == getCurrentChar(0);
+    }
+
+    private boolean isEnd() {
+        return offset >= input.length();
+    }
 }

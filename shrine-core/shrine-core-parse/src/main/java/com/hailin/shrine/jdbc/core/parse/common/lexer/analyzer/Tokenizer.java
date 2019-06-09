@@ -2,6 +2,9 @@ package com.hailin.shrine.jdbc.core.parse.common.lexer.analyzer;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 扫描标识符
+ */
 @RequiredArgsConstructor
 public class Tokenizer {
 
