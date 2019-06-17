@@ -1,5 +1,7 @@
 package com.hailin.shrine.jdbc.core.parse.common.lexer.analyzer;
 
+import com.hailin.shrine.jdbc.core.parse.common.lexer.token.Literals;
+import com.hailin.shrine.jdbc.core.parse.common.lexer.token.Token;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -111,5 +113,31 @@ public class Tokenizer {
     private boolean isSingleLineCommentBegin(char current, char next) {
         return (current == '-' && next == '-')
                 ||(current == '/' && next == '/');
+    }
+
+    /**
+     * 扫描变量
+     */
+    public Token scanVariable(){
+        int length = 1 ;
+        if ('@' == charAt(offset + 1)){
+            length ++ ;
+        }
+        while (isVariableChar(charAt(offset + 1))){
+            length  ++ ;
+        }
+        return new Token(Literals.VARIABLE , input.substring(offset , offset + length) , offset + length);
+
+    }
+
+    /**
+     * 是不是可用的字符
+     */
+    private boolean isVariableChar(final char ch){
+        return isIdentifierChar(ch) || '.' == ch;
+    }
+
+    private boolean isIdentifierChar(final char ch) {
+        return CharType.isAlphabet(ch) || CharType.isDigital(ch) || '_' == ch || '$' == ch || '#' == ch;
     }
 }
