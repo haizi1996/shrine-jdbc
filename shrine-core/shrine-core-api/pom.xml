@@ -9,12 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shrine-core-parse</artifactId>
+    <artifactId>shrine-core-api</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.hailin</groupId>
-            <artifactId>shrine-core-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
     </dependencies>
 

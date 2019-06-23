@@ -1,0 +1,61 @@
+package com.hailin.shrine.sharding.jdbc.core.common.common.sql.statement;
+
+
+import com.google.common.base.Optional;
+import com.hailin.shrine.jdbc.core.common.constant.SQLType;
+import com.hailin.shrine.sharding.jdbc.core.common.common.context.condition.Conditions;
+import com.hailin.shrine.sharding.jdbc.core.common.common.context.table.Tables;
+import com.hailin.shrine.sharding.jdbc.core.common.sql.token.SQLToken;
+import lombok.*;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+@RequiredArgsConstructor
+@Getter
+@Setter@ToString
+public abstract class AbstractSQLStatement implements SQLStatement {
+
+    private final SQLType type;
+
+    private final Tables tables = new Tables();
+
+    private final Conditions routeConditions = new Conditions();
+
+    private final Conditions encryptConditions = new Conditions();
+
+    @Getter(AccessLevel.NONE)
+    private final List<SQLToken> sqlTokens = new LinkedList<>();
+
+    private int parametersIndex;
+
+    private String logicSQL;
+
+    @Override
+    public final void addSQLToken(final SQLToken sqlToken) {
+        sqlTokens.add(sqlToken);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public final <T extends SQLToken> Optional<T> findSQLToken(final Class<T> sqlTokenType) {
+        for (SQLToken each : sqlTokens) {
+            if (each.getClass().equals(sqlTokenType)) {
+                return Optional.of((T) each);
+            }
+        }
+        return Optional.absent();
+    }
+
+    @Override
+    public final List<SQLToken> getSQLTokens() {
+        Collections.sort(sqlTokens);
+        return sqlTokens;
+    }
+
+    @Override
+    public final void increaseParametersIndex() {
+        ++parametersIndex;
+    }
+}

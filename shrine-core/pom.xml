@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>shrine-core-parse</module>
+        <module>shrine-core-common</module>
+        <module>shrine-core-api</module>
     </modules>
 
 
