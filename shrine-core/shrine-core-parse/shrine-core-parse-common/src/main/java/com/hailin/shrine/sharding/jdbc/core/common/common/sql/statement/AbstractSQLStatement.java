@@ -17,19 +17,23 @@ import java.util.List;
 @Setter@ToString
 public abstract class AbstractSQLStatement implements SQLStatement {
 
+    //SQL类型
     private final SQLType type;
 
+    //数据库表
     private final Tables tables = new Tables();
 
+    //路由条件
     private final Conditions routeConditions = new Conditions();
 
+    //编码条件 有的数据库表字段需要进行加密编码，比如密码字段
     private final Conditions encryptConditions = new Conditions();
 
     @Getter(AccessLevel.NONE)
     private final List<SQLToken> sqlTokens = new LinkedList<>();
-
+    //参数的索引值
     private int parametersIndex;
-
+    //sql语句
     private String logicSQL;
 
     @Override

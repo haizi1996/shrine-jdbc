@@ -43,6 +43,7 @@ public final class SQLParsingEngine {
             return cachedSQLStatement.get();
         }
         LexerEngine lexerEngine = LexerEngineFactory.newInstance(dbType, sql);
+        // 创建SQL解析器进行解析
         SQLStatement result = SQLParserFactory.newInstance(dbType, shardingRule, lexerEngine, shardingTableMetaData, sql).parse();
         if (useCache) {
             parsingResultCache.put(sql, result);

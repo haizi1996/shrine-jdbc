@@ -1,4 +1,4 @@
-package com.hailin.shrine.jdbc.core.parse.common.lexer.analyzer;
+package com.hailin.shrine.sharding.jdbc.core.common.common.lexer.analyzer;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

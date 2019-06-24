@@ -1,13 +1,16 @@
-package com.hailin.shrine.jdbc.core.parse.common.lexer;
+package com.hailin.shrine.sharding.jdbc.core.common.common.lexer;
 
 
-import com.hailin.shrine.jdbc.core.parse.common.lexer.analyzer.CharType;
-import com.hailin.shrine.jdbc.core.parse.common.lexer.analyzer.Dictionary;
-import com.hailin.shrine.jdbc.core.parse.common.lexer.analyzer.Tokenizer;
-import com.hailin.shrine.jdbc.core.parse.common.lexer.token.Token;
+import com.hailin.shrine.sharding.jdbc.core.common.common.lexer.analyzer.CharType;
+import com.hailin.shrine.sharding.jdbc.core.common.common.lexer.analyzer.Dictionary;
+import com.hailin.shrine.sharding.jdbc.core.common.common.lexer.analyzer.Tokenizer;
+import com.hailin.shrine.sharding.jdbc.core.common.common.lexer.token.Token;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 词法分析
+ */
 @RequiredArgsConstructor
 public class Lexer {
 

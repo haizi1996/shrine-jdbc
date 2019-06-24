@@ -9,6 +9,9 @@ import com.hailin.shrine.sharding.jdbc.core.common.sql.token.SQLToken;
 
 import java.util.List;
 
+/**
+ * SQL
+ */
 public interface SQLStatement {
 
     /**

@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>shrine-core-parse</artifactId>
+    <modules>
+        <module>shrine-core-parse-common</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>com.hailin</groupId>

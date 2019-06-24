@@ -1,6 +1,5 @@
 package com.hailin.shrine.sharding.jdbc.core.common.common.dialect;
 
-import com.hailin.shrine.sharding.jdbc.core.common.common.lexer.LexerEngine;
 import com.hailin.shrine.sharding.jdbc.core.common.common.parser.clause.expression.AliasExpressionParser;
 import com.hailin.shrine.sharding.jdbc.core.common.common.parser.clause.expression.BasicExpressionParser;
 import lombok.NoArgsConstructor;

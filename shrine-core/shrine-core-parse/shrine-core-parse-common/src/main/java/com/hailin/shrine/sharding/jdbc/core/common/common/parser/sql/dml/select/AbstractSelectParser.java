@@ -36,6 +36,9 @@ public abstract class AbstractSelectParser implements SQLParser {
     //分片表的元数据信息
     private final ShardingTableMetaData shardingTableMetaData;
 
+
+
+
     @Override
     public SelectStatement parse() {
         SelectStatement result = parseInternal();
@@ -54,5 +57,14 @@ public abstract class AbstractSelectParser implements SQLParser {
         lexerEngine.nextToken();
         parseInternal(result);
         return result;
+    }
+
+    protected abstract void parseInternal(SelectStatement selectStatement);
+
+    /**
+     * 判断是否子查询
+     */
+    public boolean containsSubquery() {
+        return null != subqueryStatement;
     }
 }
